@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Матчи дня: шансы без маржи, прогноз рынка и модели — Линза</title>
+<meta name="description" content="Матчи дня: шанс каждого исхода без маржи конторы, прогноз рынка по ценам 15–20 контор и модели Линзы, честные кэфы и «Итог». 18+">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Матчи дня: шансы без маржи, прогноз рынка и модели — Линза">
+<meta property="og:description" content="Матчи дня: шанс каждого исхода без маржи конторы, прогноз рынка по ценам 15–20 контор и модели Линзы, честные кэфы и «Итог». 18+">
+<meta property="og:image" content="assets/board.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' rx='30' fill='%235b4be6'/%3E%3Ccircle cx='57' cy='57' r='30' fill='none' stroke='%23fff' stroke-width='10'/%3E%3Cpath d='M79.500 79.500 100 100' stroke='%23fff' stroke-width='12' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<link rel="preconnect" href="https://185-72-145-3.sslip.io" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Unbounded:wght@500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Unbounded:wght@500;700&display=swap"></noscript>
+<style>
+  /* Общие стили разделов сайта (матчи дня, лайв, точность, калькуляторы) — тот же вид, что у посадочной.
+     Цвета и шрифты — из design/tokens.json (node tools/tokens.mjs). Блоки между метками руками не править. */
+  :root {
+    /* tokens:light */
+    --bg: #f5f6fa;
+    --surface: #ffffff;
+    --sunken: #eef0f5;
+    --line: #e1e4ea;
+    --ink: #14161b;
+    --muted: #555c6b;
+    --faint: #666b7f;
+    --accent: #5b4be6;
+    --accent-ink: #ffffff;
+    --accent-soft: rgba(91, 75, 230, 0.14);
+    --pos: #0b8a4d;
+    --neg: #c93636;
+    --board: #12143a;
+    --board-ink: #ffffff;
+    --display: "Unbounded", "Arial Black", "Segoe UI", sans-serif;
+    --body: "Golos Text", "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+    --num: "JetBrains Mono", "Cascadia Mono", Consolas, monospace;
+    /* /tokens */
+    --wrap: 1120px;
+    --live: #e5484d;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      /* tokens:dark */
+      --bg: #0f1117;
+      --surface: #171a23;
+      --sunken: #272b34;
+      --line: #2c3040;
+      --ink: #eef0f6;
+      --muted: #a4a8bb;
+      --faint: #8e92a8;
+      --accent: #8f82ff;
+      --accent-ink: #0f1017;
+      --accent-soft: rgba(143, 130, 255, 0.18);
+      --pos: #45d08f;
+      --neg: #ff7676;
+      --board: #1b1e4a;
+      --board-ink: #ffffff;
+      /* /tokens */
+      color-scheme: dark;
+      --live: #ff6b6f;
+    }
+  }
+  :root[data-theme="dark"] {
+    /* tokens:dark */
+    --bg: #0f1117;
+    --surface: #171a23;
+    --sunken: #272b34;
+    --line: #2c3040;
+    --ink: #eef0f6;
+    --muted: #a4a8bb;
+    --faint: #8e92a8;
+    --accent: #8f82ff;
+    --accent-ink: #0f1017;
+    --accent-soft: rgba(143, 130, 255, 0.18);
+    --pos: #45d08f;
+    --neg: #ff7676;
+    --board: #1b1e4a;
+    --board-ink: #ffffff;
+    /* /tokens */
+    color-scheme: dark;
+    --live: #ff6b6f;
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.55 var(--body); -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+  .wrap { max-width: var(--wrap); margin: 0 auto; padding-inline: 20px; }
+  h1, h2, h3 { margin: 0; text-wrap: balance; }
+  h1 { font: 700 clamp(26px, 3.6vw, 40px)/1.12 var(--display); letter-spacing: -0.02em; }
+  h2 { font: 700 clamp(20px, 2.6vw, 26px)/1.2 var(--display); letter-spacing: -0.01em; }
+  h3 { font: 600 17px/1.3 var(--body); }
+  p { margin: 0; }
+  .num { font-family: var(--num); font-variant-numeric: tabular-nums; }
+  .muted { color: var(--muted); }
+  .eyebrow { color: var(--accent); font: 600 12.5px/1 var(--body); letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* Шапка: на телефоне меню разделов — второй строкой с прокруткой вбок */
+  .top { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .top .wrap { display: flex; align-items: center; gap: 20px; min-height: 60px; }
+  .logo { display: flex; align-items: center; gap: 10px; font: 700 17px/1 var(--display); text-decoration: none; }
+  .logo svg { flex: none; }
+  .top nav { display: flex; gap: 4px; margin-left: auto; font-size: 15px; }
+  .top nav a { padding: 7px 11px; border-radius: 9px; color: var(--muted); text-decoration: none; white-space: nowrap; }
+  .top nav a:hover { color: var(--ink); background: var(--sunken); }
+  .top nav a[aria-current="page"] { color: var(--ink); background: var(--accent-soft); font-weight: 600; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 18px; border: 1px solid transparent; border-radius: 12px; background: var(--accent); color: var(--accent-ink); font: 600 15.5px/1 var(--body); text-decoration: none; cursor: pointer; transition: transform .12s ease, filter .12s ease; }
+  .btn:hover { filter: brightness(1.08); transform: translateY(-1px); }
+  .btn.ghost { background: transparent; border-color: var(--line); color: var(--ink); }
+  .btn.small { min-height: 38px; padding: 0 14px; font-size: 14.5px; border-radius: 10px; }
+  @media (max-width: 860px) {
+    .top .wrap { flex-wrap: wrap; gap: 0 12px; min-height: 0; padding-top: 10px; }
+    .top .btn { margin-left: auto; }
+    .top nav { order: 3; width: calc(100% + 40px); margin: 8px -20px 0; padding: 0 16px 8px; overflow-x: auto; scrollbar-width: none; }
+    .top nav::-webkit-scrollbar { display: none; }
+  }
+
+  /* Заголовок раздела */
+  .page { padding-block: clamp(22px, 4vw, 40px) clamp(36px, 6vw, 64px); }
+  .page-head { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; max-width: 46em; }
+  .page-head p { color: var(--muted); font-size: clamp(15.5px, 1.6vw, 17.5px); }
+
+  /* Вкладки видов спорта */
+  .tabs { position: relative; display: flex; gap: 6px; margin: 0 0 16px; padding: 4px; border: 1px solid var(--line); border-radius: 13px; background: var(--surface); overflow-x: auto; scrollbar-width: none; width: fit-content; max-width: 100%; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tabs button { flex: none; min-height: 36px; padding: 0 14px; border: 0; border-radius: 9px; background: transparent; color: var(--muted); font: 600 14.5px/1 var(--body); cursor: pointer; }
+  .tabs button:hover { color: var(--ink); }
+  .tabs button[aria-selected="true"] { background: var(--accent); color: var(--accent-ink); }
+  .tabs button small { margin-left: 5px; font: 600 12px/1 var(--num); opacity: .75; }
+
+  /* Карточки и сетка */
+  .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; align-items: start; }
+  .grid > .wide { grid-column: 1 / -1; }
+  .stack { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+  @media (max-width: 900px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+  .card { min-width: 0; padding: 18px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }
+  .card.accent { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); box-shadow: 0 0 0 3px var(--accent-soft); }
+  .kicker { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 12px; color: var(--faint); font: 600 13px/1.3 var(--body); letter-spacing: .02em; }
+  .badge { flex: 0 1 auto; max-width: 62%; padding: 4px 9px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font: 600 12px/1.2 var(--body); text-align: right; }
+  .kicker > :first-child { min-width: 0; }
+  .badge.accent { border-color: transparent; background: var(--accent-soft); color: var(--accent); }
+  .badge.pos { border-color: transparent; background: color-mix(in srgb, var(--pos) 14%, transparent); color: var(--pos); }
+  .fact { padding: 3px 0; font-size: 15px; }
+  .hint { color: var(--muted); font-size: 13.5px; line-height: 1.5; }
+  .hint + .hint, .fact + .hint { margin-top: 8px; }
+  .foot { margin-top: 22px; color: var(--faint); font-size: 13px; }
+  details.more { margin-top: 8px; border-top: 1px dashed var(--line); }
+  details.more summary { padding: 9px 0 4px; cursor: pointer; font-weight: 600; font-size: 14.5px; list-style: none; }
+  details.more summary::-webkit-details-marker { display: none; }
+  details.more summary::after { content: " +"; color: var(--faint); }
+  details.more[open] summary::after { content: " −"; }
+
+  /* Строка матча в списке */
+  .list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  @media (max-width: 900px) { .list { grid-template-columns: minmax(0, 1fr); } }
+  .list-title { grid-column: 1 / -1; display: flex; align-items: baseline; gap: 10px; margin: 8px 2px 0; font: 700 15px/1.2 var(--body); }
+  .list-title span { color: var(--faint); font-weight: 500; font-size: 13.5px; }
+  a.match { display: flex; flex-direction: column; gap: 8px; min-width: 0; padding: 14px 16px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); text-decoration: none; transition: border-color .12s ease, transform .12s ease; }
+  a.match:hover { border-color: color-mix(in srgb, var(--accent) 55%, var(--line)); transform: translateY(-1px); }
+  .when { display: flex; justify-content: space-between; gap: 10px; color: var(--faint); font-size: 13px; }
+  .when span:last-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: right; }
+  .teams { font-weight: 650; font-size: 16px; line-height: 1.3; }
+  .teams b { margin-inline: 6px; font: 700 16px/1 var(--num); }
+  .odds { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 6px; }
+  .odd { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 6px 4px; border: 1px solid var(--line); border-radius: 10px; background: var(--sunken); min-width: 0; }
+  .odd small { max-width: 100%; overflow: hidden; color: var(--faint); font-size: 11.5px; text-overflow: ellipsis; white-space: nowrap; }
+  .odd b { font: 700 15px/1.1 var(--num); }
+  .odd.fav { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+  .live-dot { display: inline-flex; align-items: center; gap: 6px; color: var(--live); font-weight: 600; }
+  .live-dot::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--live); animation: pulse 1.6s ease-in-out infinite; }
+  @keyframes pulse { 50% { opacity: .35; } }
+
+  /* Полосы шансов: имя · кэф · полоса · процент; засечка — шанс по другой оценке для сравнения */
+  .prob { display: grid; grid-template-columns: minmax(0, 1.2fr) 52px minmax(60px, 1.6fr) 46px; gap: 10px; align-items: center; padding: 5px 0; font-size: 15px; }
+  .prob .name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .prob .k { color: var(--muted); font: 600 14px/1 var(--num); text-align: right; }
+  .prob .pct { font: 700 14.5px/1 var(--num); text-align: right; }
+  .track { position: relative; height: 8px; border-radius: 4px; background: var(--sunken); }
+  .track i { position: absolute; inset: 0 auto 0 0; border-radius: 4px; background: var(--accent); }
+  .track u { position: absolute; top: -4px; width: 2px; height: 16px; margin-left: -1px; border-radius: 1px; background: var(--ink); opacity: .55; }
+
+  /* Таблицы */
+  .table { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+  th, td { padding: 9px 12px; text-align: right; white-space: nowrap; }
+  th:first-child, td:first-child { text-align: left; white-space: normal; }
+  thead th { color: var(--faint); font-weight: 600; font-size: 12.5px; border-bottom: 1px solid var(--line); }
+  tbody tr + tr td { border-top: 1px solid var(--line); }
+  td.num, td .num { font-family: var(--num); font-variant-numeric: tabular-nums; }
+  td.best { color: var(--pos); font-weight: 700; }
+  .card .table { margin-top: 4px; }
+
+  /* Крупные цифры */
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+  .stat { padding: 14px; border-radius: 13px; background: var(--sunken); }
+  .stat b { display: block; font: 700 clamp(22px, 2.6vw, 28px)/1.1 var(--num); letter-spacing: -0.02em; }
+  .stat span { display: block; margin-top: 4px; color: var(--muted); font-size: 13px; line-height: 1.35; }
+  .pos { color: var(--pos); }
+  .neg { color: var(--neg); }
+
+  /* Формы калькуляторов */
+  .fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(92px, 1fr)); gap: 10px; }
+  label.field { display: flex; flex-direction: column; gap: 5px; min-width: 0; color: var(--muted); font-size: 13px; font-weight: 600; }
+  .field input, .field select { width: 100%; min-height: 42px; padding: 0 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--ink); font: 600 16px/1 var(--num); }
+  .field select { font-family: var(--body); font-size: 15px; }
+  .field input:focus, .field select:focus { border-color: var(--accent); outline: none; box-shadow: 0 0 0 3px var(--accent-soft); }
+  .legs { display: flex; flex-direction: column; gap: 8px; }
+  .leg { display: grid; grid-template-columns: 28px minmax(0, 1fr) minmax(0, 1.4fr) 36px; gap: 8px; align-items: end; }
+  .leg > b { padding-bottom: 11px; color: var(--faint); font: 700 14px/1 var(--num); }
+  .icon-btn { width: 36px; height: 42px; border: 1px solid var(--line); border-radius: 10px; background: transparent; color: var(--muted); font: 600 18px/1 var(--body); cursor: pointer; }
+  .icon-btn:hover { color: var(--neg); border-color: var(--neg); }
+  .result { margin-top: 14px; padding: 14px; border-radius: 13px; background: var(--sunken); }
+  .result .stats { grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 8px; }
+  .result .stat { padding: 10px 12px; background: var(--surface); }
+  .result .stat b { font-size: 21px; }
+  .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 12px; }
+
+  /* Графики калибровки */
+  .charts { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+  @media (max-width: 1000px) { .charts { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 620px) { .charts { grid-template-columns: minmax(0, 1fr); } }
+  .chart { display: block; width: 100%; height: auto; margin-top: 4px; }
+  .chart text { fill: var(--faint); font: 500 11px var(--body); }
+  .chart .grid-line { stroke: var(--line); }
+  .chart .diag { stroke: var(--faint); stroke-dasharray: 4 4; }
+  .chart .curve { fill: none; stroke: var(--accent); stroke-width: 2.5; }
+  .chart .dot { fill: var(--accent); }
+  .legend { display: flex; flex-wrap: wrap; gap: 14px; color: var(--muted); font-size: 12.5px; }
+  .legend i { display: inline-block; width: 14px; height: 3px; margin-right: 6px; vertical-align: middle; background: var(--accent); }
+  .legend i.d { background: none; border-top: 2px dashed var(--faint); height: 0; }
+
+  /* Загрузка и пусто */
+  .skeleton { height: 96px; border-radius: 14px; background: linear-gradient(90deg, var(--sunken) 0%, color-mix(in srgb, var(--sunken) 50%, var(--surface)) 50%, var(--sunken) 100%); background-size: 200% 100%; animation: shimmer 1.3s linear infinite; }
+  @keyframes shimmer { to { background-position: -200% 0; } }
+  .empty { grid-column: 1 / -1; padding: 26px 18px; border: 1px dashed var(--line); border-radius: 14px; color: var(--muted); text-align: center; }
+  .back { display: inline-flex; align-items: center; gap: 6px; margin-bottom: 14px; padding: 0; border: 0; background: none; color: var(--accent); font: 600 15px/1.4 var(--body); text-decoration: none; cursor: pointer; }
+  .cta-band { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; margin-top: 22px; padding: 18px 20px; border-radius: 16px; background: var(--board); color: var(--board-ink); }
+  .cta-band p { max-width: 36em; color: rgba(255, 255, 255, .82); font-size: 15px; }
+  .cta-band .btn.ghost { border-color: rgba(255, 255, 255, .3); color: #fff; }
+  .updated { color: var(--faint); font-size: 13px; }
+
+  footer { padding-block: 32px 44px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+  footer .wrap { display: flex; flex-direction: column; gap: 12px; }
+  footer nav { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+  .age { display: inline-grid; place-items: center; width: 38px; height: 38px; border: 2px solid var(--faint); border-radius: 50%; font: 700 13px/1 var(--num); color: var(--muted); }
+  @media (max-width: 520px) {
+    .card { padding: 15px; }
+    .prob { grid-template-columns: minmax(0, 1fr) 46px minmax(48px, 1fr) 42px; gap: 8px; font-size: 14.5px; }
+    .leg { grid-template-columns: 22px minmax(0, 1fr) minmax(0, 1.2fr) 36px; }
+    th, td { padding: 8px 9px; }
+    .result .stat b { font-size: 19px; }
+  }
+  @media (prefers-reduced-motion: reduce) { *, *::before { transition: none !important; animation: none !important; } }
+  .kicker-title { color: var(--ink); font: 700 16.5px/1.3 var(--body); letter-spacing: 0; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .list > .card { display: flex; flex-direction: column; }
+  .when span:first-child { flex: none; white-space: nowrap; }
+  .when span:last-child { min-width: 0; }
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="Линза — на главную">
+      <svg width="30" height="30" viewBox="0 0 128 128" aria-hidden="true"><rect width="128" height="128" rx="30" fill="#5b4be6"/><circle cx="57" cy="57" r="30" fill="none" stroke="#fff" stroke-width="10"/><path d="M79.500 79.500 100 100" stroke="#fff" stroke-width="12" stroke-linecap="round"/><path d="M44 59 54 69 71 48" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Линза
+    </a>
+    <nav aria-label="Разделы">
+      <a href="matches.html" data-nav="matches" aria-current="page">Матчи дня</a>
+      <a href="live.html" data-nav="live">Лайв по счёту</a>
+      <a href="accuracy.html" data-nav="accuracy">Точность</a>
+      <a href="tools.html" data-nav="tools">Калькуляторы</a>
+    </nav>
+    <a class="btn small" href="index.html#install">Установить</a>
+  </div>
+</header>
+
+<main class="page" data-page="matches">
+  <div class="wrap">
+    <div class="page-head">
+      <span class="eyebrow">Матчи дня</span>
+      <h1>Что заложено в цене</h1>
+      <p>Матчи ближайших полутора суток: шанс каждого исхода без маржи конторы, прогноз рынка по ценам 15–20 контор мира и модели Линзы, честные кэфы и «Итог» — где цена выше честной.</p>
+    </div>
+    <div class="row" id="bar" style="justify-content:space-between;margin:0 0 14px">
+      <div class="tabs" id="tabs" aria-label="Вид спорта" style="margin:0"></div>
+      <label class="field" style="flex:1 1 220px;max-width:320px"><span class="sr-only">Найти матч</span><input id="filter" type="search" placeholder="Команда или лига" autocomplete="off" style="font-family:var(--body)"></label>
+    </div>
+    <div class="list" id="view"></div>
+    <div class="cta-band">
+      <p>Те же цифры расширение показывает прямо на странице линии десяти контор — без переключения вкладок.</p>
+      <div class="row" style="margin:0"><a class="btn" href="index.html#install">Установить Линзу</a><a class="btn ghost" href="https://t.me/linza_keys_bot?start=site">Telegram-бот</a></div>
+    </div>
+    <p class="foot">Шансы — оценка, а не обещание: проиграть можно и при высоком шансе. Линза не принимает ставки. 18+</p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="age">18+</span>
+    <p>Линза — инструмент для чтения линии. Она не принимает ставки, не является букмекером и не гарантирует результат. Участие в азартных играх может привести к потере денег и к зависимости. Если игра перестала быть развлечением, остановитесь.</p>
+    <nav aria-label="Документы">
+      <a href="index.html">О расширении</a>
+      <a href="privacy.html">Конфиденциальность</a>
+      <a href="terms.html">Условия использования</a>
+      <a href="https://t.me/linza_odds">Telegram-канал</a>
+    </nav>
+  </div>
+</footer>
+<script>window.LINZA = { api: 'https://185-72-145-3.sslip.io', bot: 'https://t.me/linza_keys_bot?start=site', app: 'https://185-72-145-3.sslip.io/app/' };</script>
+<script src="assets/site.js?v=41ce13f3" defer></script>
+
+</body>
+</html>
