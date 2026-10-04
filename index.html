@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Линза — что заложено в коэффициенте</title>
 <meta name="description" content="Линза — расширение для Chrome: показывает шанс без маржи и маржу букмекера прямо на странице линии. Без прогнозов и обещаний. 18+">
-<meta name="robots" content="noindex">
+<link rel="canonical" href="https://linzabet.ru/">
+<meta property="og:url" content="https://linzabet.ru/">
 <meta property="og:title" content="Линза — что заложено в коэффициенте">
 <meta property="og:description" content="Линза — расширение для Chrome: показывает шанс без маржи и маржу букмекера прямо на странице линии. Без прогнозов и обещаний. 18+">
 <meta property="og:image" content="assets/board.png">
@@ -13,7 +14,7 @@
 <style>html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
-<link rel="preconnect" href="https://185-72-145-3.sslip.io" crossorigin>
+<link rel="preconnect" href="https://linzabet.ru" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Unbounded:wght@500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
@@ -352,7 +353,7 @@
   (function () {
     var box = document.getElementById('accuracy-body');
     var pct = function (v) { return v == null ? '—' : (v * 100).toFixed(1) + '%'; };
-    fetch('https://185-72-145-3.sslip.io/v1/public/stats').then(function (r) { return r.json(); }).then(function (s) {
+    fetch('https://linzabet.ru/v1/public/stats').then(function (r) { return r.json(); }).then(function (s) {
       var names = { cs: 'Counter-Strike', dota: 'Dota 2', tennis: 'Теннис', basketball: 'Баскетбол' };
       var rows = Object.keys(names).map(function (k) {
         var m = s.models && s.models[k]; var b = m && m.backtest; if (!b) return '';
@@ -519,14 +520,14 @@
       <p>В панели сравнения цен и в карточке выбранного исхода видно, где на этот же исход кэф выше, и сколько это даёт со ставки, которую вы задали в настройках. Если у такой конторы есть наш промокод, рядом будет кнопка. На сайте самой конторы ни ссылка, ни промокод не показываются — только у конкурентов, и только по вашему клику.</p>
       <div class="partner-box">
         <p><b>Fonbet</b> — фрибет за регистрацию: у большинства 100, у редких новичков — до 15 000 (правила Fonbet)</p>
-        <p><a class="btn" href="https://185-72-145-3.sslip.io/go/fonbet?s=site" rel="sponsored noopener" target="_blank">Открыть Fonbet</a></p>
+        <p><a class="btn" href="https://linzabet.ru/go/fonbet?s=site" rel="sponsored noopener" target="_blank">Открыть Fonbet</a></p>
         <p class="small">Партнёрская ссылка · ООО «ФОНКОР» · 18+. Азартные игры могут вызывать зависимость. Линза не принимает ставки и не обещает выигрыш.</p>
       </div>
       <script>
       // Показ блока — для доли переходов (CTR): не чаще раза в 6 часов с этого браузера, без данных о посетителе.
       (function () {
         try { var k = 'lz.pseen.site', t = Number(localStorage.getItem(k)) || 0; if (Date.now() - t < 216e5) return; localStorage.setItem(k, String(Date.now())); } catch (e) {}
-        fetch('https://185-72-145-3.sslip.io/v1/partners/seen?s=site&ids=fonbet', { mode: 'no-cors' }).catch(function () {});
+        fetch('https://linzabet.ru/v1/partners/seen?s=site&ids=fonbet', { mode: 'no-cors' }).catch(function () {});
       })();
       </script>
     </div>
@@ -575,7 +576,7 @@
             <li>«Добавить на экран „Домой“» — откроется как обычное приложение</li>
             <li>Платный тариф — вводом ключа в профиле</li>
           </ul>
-          <a class="btn ghost" href="https://185-72-145-3.sslip.io/app/">Открыть в браузере</a>
+          <a class="btn ghost" href="https://linzabet.ru/app/">Открыть в браузере</a>
         </div>
         <div class="plan">
           <h3>Расширение на Android</h3>
@@ -651,7 +652,7 @@
 
 <script>
   (function () {
-    var api = 'https://185-72-145-3.sslip.io'.replace(/\/+$/, '');
+    var api = 'https://linzabet.ru'.replace(/\/+$/, '');
     var buttons = document.querySelectorAll('.pay-card');
     var note = document.getElementById('pay-note');
     if (!api || !buttons.length || !window.fetch) return;
