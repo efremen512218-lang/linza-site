@@ -11,9 +11,12 @@
 <meta name="google-site-verification" content="0M8W9B8DvTHBa6_JITAHxrrwVJpmH1hKU6lKaA0oms4">
 <meta property="og:title" content="Линза — что заложено в коэффициенте">
 <meta property="og:description" content="Оплата ключа Линзы.">
-<meta property="og:image" content="assets/board.png">
+<meta property="og:image" content="https://linzabet.ru/assets/board.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' rx='30' fill='%235b4be6'/%3E%3Ccircle cx='57' cy='57' r='30' fill='none' stroke='%23fff' stroke-width='10'/%3E%3Cpath d='M79.500 79.500 100 100' stroke='%23fff' stroke-width='12' stroke-linecap='round'/%3E%3C/svg%3E">
 <style>html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<script>(function(){var L=["sports","vk","stavka","dtf","pikabu"],K="lz.src",v="",s="";try{var m=/[?&]src=([^&#]*)/.exec(location.search||"");if(m)v=decodeURIComponent(m[1]).trim().toLowerCase();}catch(e){}if(L.indexOf(v)>=0){try{sessionStorage.setItem(K,v);}catch(e){}}else{try{s=String(sessionStorage.getItem(K)||"").toLowerCase();}catch(e){}}var h=document.documentElement,t=L.indexOf(v)>=0?v:L.indexOf(s)>=0?s:"";h.className=(h.className?h.className+" ":"")+(t?"lz-noprice":"lz-price");if(t)h.setAttribute("data-lz-src",t);})();</script><style>html:not(.lz-price) [data-price]{display:none!important}</style>
+<script>(function(){var L=["sports","vk","stavka","dtf","pikabu"],h=document.documentElement,t=String(h.getAttribute("data-lz-src")||"");if(L.indexOf(t)<0)return;var R=/^(https:\/\/t\.me\/[A-Za-z0-9_]{3,64}(?:\/[A-Za-z0-9_]{1,64})?\/?\?(?:[^#]*&)?start(?:app)?=)(site(?:-[A-Za-z0-9_-]+)?|seo-[A-Za-z0-9_-]+)(?=$|[&#])/,W=function tgSrcTag(v, t, L) {var s = String(v == null ? '' : v), m = /^(?:site(?:-([A-Za-z0-9_-]+))?|(seo-[A-Za-z0-9_-]+))$/.exec(s), r, o;if (!m || !L || L.indexOf(t) < 0) return s;r = m[1] || m[2] || '';if (m[1] && L.indexOf(r.split('-')[0].toLowerCase()) >= 0) return s;o = 'site-' + t + (r ? '-' + r : '');return o.length <= 64 ? o : s;};function f(a){var x=a&&a.getAttribute?a.getAttribute("href"):"",m=x?R.exec(x):null,y;if(m){y=W(m[2],t,L);if(y!==m[2])a.setAttribute("href",m[1]+y+x.slice(m[0].length));}}function g(e){var a=e.target&&e.target.closest?e.target.closest("a[href]"):null;if(a)f(a);}document.addEventListener("DOMContentLoaded",function(){var x=document.querySelectorAll("a[href]");for(var i=0;i<x.length;i++)f(x[i]);});document.addEventListener("pointerdown",g,true);document.addEventListener("click",g,true);})();</script>
+<script>(function(){var L=["vk","tg","video","share","site","sports","stavka","dtf","pikabu","ok","ok-pin","vk-pin","ch-pin"],K="lz.hit",v="";try{var m=/[?&]src=([^&#]*)/.exec(location.search||"");if(m)v=decodeURIComponent(m[1]).trim().toLowerCase();}catch(e){}if(L.indexOf(v)<0||typeof fetch!=="function")return;try{if(sessionStorage.getItem(K))return;sessionStorage.setItem(K,"1");}catch(e){return;}try{fetch("https://linzabet.ru/v1/public/hit?src="+v,{method:"POST",mode:"no-cors",credentials:"omit",cache:"no-store",keepalive:true,referrerPolicy:"strict-origin"})["catch"](function(){});}catch(e){}})();</script>
 </head>
 <body>
 <meta name="robots" content="noindex">
@@ -31,17 +34,116 @@
   button { font-family: inherit; font-size: 15px; font-weight: 600; line-height: 1; padding: 10px 14px; border-radius: 10px; border: 0; background: var(--accent); color: #fff; cursor: pointer; }
   .ok { color: var(--pos); font-weight: 600; }
   .bad { color: var(--neg); font-weight: 600; }
+  .card.sub { border-color: var(--accent); }
+  a.btn { display: inline-block; padding: 12px 18px; border-radius: 10px; background: var(--accent); color: #fff; font-weight: 700; line-height: 1.3; text-decoration: none; }
+/* Общий визуальный слой: лендинг и страницы используют одни размеры, палитру и фокус. */
+html { scroll-padding-top: 92px; }
+body { line-height: 1.65; }
+.wrap { max-width: 1200px; padding-inline: 32px; }
+.top { background: var(--bg); border-bottom: 1px solid var(--line); }
+.top .wrap { min-height: 84px; gap: 28px; }
+.logo { font-size: 24px; letter-spacing: -.8px; gap: 12px; }
+.top nav { gap: 22px; }
+.top nav a { font-size: 13px; color: var(--muted); }
+.top nav a:hover, .top nav a[aria-current="page"] { color: var(--ink); }
+.btn { border-radius: 11px; min-height: 48px; padding-inline: 22px; font-weight: 650; }
+.btn.small { min-height: 40px; padding-inline: 16px; }
+.hero { padding: 84px 0 100px; border-bottom: 1px solid var(--line); }
+.hero .wrap { display: grid; grid-template-columns: 1.06fr 1fr; align-items: center; gap: 72px; }
+.hero h1 { font-family: var(--body); font-size: clamp(42px, 5vw, 70px); line-height: 1.03; font-weight: 700; letter-spacing: -.055em; max-width: 12ch; margin-bottom: 26px; }
+.hero .eyebrow { font-size: 11px; letter-spacing: .11em; margin-bottom: 24px; color: var(--accent); }
+.hero .lead { max-width: 47ch; font-size: 16px; line-height: 1.75; color: var(--muted); }
+.hero .cta { margin-top: 30px; gap: 10px; }
+.hero .fine { max-width: 48ch; margin-top: 20px; font-size: 11px; line-height: 1.8; color: var(--faint); }
+.board { position: relative; min-width: 0; border: 1px solid #34354c; border-radius: 24px; padding: 26px; background: #151722; box-shadow: 0 24px 80px #0002; }
+.studio-label { display: flex; justify-content: space-between; gap: 12px; padding-bottom: 24px; font-family: var(--num); font-size: 11px; letter-spacing: .06em; color: #aaaec4; }
+.studio-label span:first-child { color: #b5aaff; }
+.board-head { padding-bottom: 22px; border-bottom: 1px solid #333548; margin-bottom: 8px; }
+.board-head b { font-size: 24px; font-weight: 600; letter-spacing: -.7px; line-height: 1.25; }
+.board-head b span { font-size: 11px; margin-top: 7px; line-height: 1.5; }
+.switch { flex: none; border-color: #45495c; min-height: 40px; }
+.market { padding: 20px 0; gap: 12px; border-bottom-color: #333548; }
+.market > span { font-size: 13px; }
+.market > span small { font-size: 11px; margin-top: 4px; color: #aaaec4; }
+.board .odds { gap: 7px; }
+.board .odd { min-width: 56px; height: 54px; padding: 12px 9px; border-radius: 10px; font-size: 17px; background: #242737; color: #f1f2fa; }
+.board.on .odd { padding-bottom: 26px; }
+.board.on .odd::after { color: #bdb4ff; font-size: 11px; top: auto; bottom: 5px; left: 0; right: 0; background: none; text-align: center; }
+.board .odd.pick { background: #36304e; }
+.gauge { margin-top: 22px; font-size: 12px; line-height: 1.65; color: #c0c3d3; }
+section:not(.hero) { padding-block: 84px; }
+.head { max-width: 750px; margin-bottom: 40px; }
+.head h2 { font-family: var(--body); font-size: clamp(28px, 3vw, 42px); line-height: 1.14; letter-spacing: -.035em; }
+.eyebrow { font-size: 11px; letter-spacing: .12em; }
+.lead { font-size: 16px; line-height: 1.75; }
+.feature { gap: 64px; padding-block: 34px; }
+.feature h3 { font-size: 25px; font-family: var(--body); letter-spacing: -.6px; line-height: 1.3; }
+.feature p { font-size: 15px; line-height: 1.8; }
+.shot { border-radius: 15px; overflow: hidden; border: 1px solid var(--line); box-shadow: none; }
+.shot img { display: block; width: 100%; height: auto; }
+.shot figcaption { padding: 14px; font-size: 11px; line-height: 1.6; }
+.card, .tier, .tool, .mcard { border-radius: 16px; box-shadow: none; }
+.plans { gap: 16px; }
+.plan { border-radius: 17px; padding: 26px; box-shadow: none; }
+.plan .price { font-family: var(--body); font-weight: 700; letter-spacing: -1.4px; }
+.faq details { border-radius: 11px; }
+.faq summary { min-height: 52px; display: flex; align-items: center; }
+footer { padding-block: 40px; }
+footer p { max-width: 85ch; line-height: 1.8; font-size: 12px; }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+@media (max-width: 1000px) {
+  .hero .wrap { gap: 32px; }
+  .top nav { gap: 12px; }
+  .top nav a { font-size: 11px; }
+  .board { padding: 20px; }
+  .board-head b { font-size: 21px; }
+}
+@media (max-width: 760px) {
+  .wrap { padding-inline: 22px; }
+  .top .wrap { min-height: 70px; gap: 12px; }
+  .top .logo { font-size: 22px; }
+  .hero { padding: 42px 0 50px; }
+  .hero .wrap { grid-template-columns: minmax(0, 1fr); gap: 38px; }
+  .hero h1 { font-size: clamp(38px, 10.8vw, 62px); max-width: 13ch; margin-bottom: 20px; }
+  .hero .lead { font-size: 15px; }
+  .hero .eyebrow { margin-bottom: 18px; font-size: 11px; }
+  .hero .cta { margin-top: 24px; }
+  .hero .cta .btn { font-size: 13px; padding-inline: 16px; }
+  .board { padding: 20px; border-radius: 18px; }
+  .board-head b { font-size: 22px; }
+  .board .odd { min-width: 45px; font-size: 15px; padding-inline: 6px; }
+  .studio-label { font-size: 11px; padding-bottom: 20px; }
+  section:not(.hero) { padding-block: 48px; }
+  .head { margin-bottom: 28px; }
+  .feature { gap: 22px; padding-block: 22px; }
+  .feature h3 { font-size: 23px; }
+}
+@media (max-width: 370px) { .wrap { padding-inline: 16px; } .board { padding: 16px; } .switch { padding-inline: 8px; gap: 6px; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
 </style>
 <main>
-  <a href="index.html">← Линза</a>
-  <h1>Оплата ключа Линзы</h1>
+  <a href="index.html">← Линза</a> · <a href="pay.html">Тарифы</a>
+  <h1>Оплата Линзы</h1>
   <div class="card" id="state"><p>Проверяю оплату…</p></div>
-  <div class="card" id="howto" hidden>
-    <p><b>Как включить:</b> откройте сайт любой конторы с Линзой → панель Линзы → значок настроек → поле «Ключ Линзы» → вставьте ключ → «Сохранить».</p>
-    <p>Чтобы тариф работал и в мини-приложении в Telegram, а напоминание о продлении пришло вовремя, отправьте ключ боту <a href="https://t.me/linza_keys_bot">https://t.me/linza_keys_bot</a>.</p>
-    <p id="receipt" hidden></p>
-    <p>Сохраните эту страницу или ключ: ссылка на страницу — ваш доступ к ключу. 18+</p>
+
+  <div class="card sub" id="connect" hidden>
+    <p><a class="btn" id="connect-link" href="https://t.me/linza_keys_bot" rel="noopener" data-goal="bot">Открыть Линзу в Telegram</a></p>
+    <p>Нажмите — доступ подключится сам.</p>
   </div>
+
+  <div class="card sub" id="autopay" hidden>
+    <p><b>Подключите напоминания в Telegram.</b> Не позднее чем за 24 часа до каждого списания за автопродление бот пишет сумму и дату и присылает кнопку отмены. Без подключения напоминание не дойдёт, а без напоминания списаний нет: если его не удастся доставить в течение 72 часов, автопродление прекратится, а данные карты будут удалены. Ключ при этом действует весь оплаченный срок.</p>
+    <p><a class="btn" id="sub-link" href="https://t.me/linza_keys_bot" rel="noopener">Подключить напоминания в Telegram</a></p>
+    <p>Отключить автопродление и отвязать карту можно в любой момент — в <a href="account">личном кабинете</a> или командой /subscription в боте.</p>
+  </div>
+  <div class="card" id="howto" hidden>
+    <h2 style="font-size:18px;margin:0 0 10px">Если вы ставили расширение на компьютере</h2>
+    <p>Откройте сайт любой конторы с Линзой → панель Линзы → значок настроек → поле «Ключ Линзы» → вставьте ключ → «Сохранить».</p>
+    <p>Чтобы доступ работал и в мини-приложении в Telegram, а напоминание о продлении пришло вовремя, отправьте ключ боту <a href="https://t.me/linza_keys_bot">https://t.me/linza_keys_bot</a>.</p><p id="edge" hidden>Вход в закрытый канал Edge бот пришлёт в ответ на ключ — ссылку на одного человека, она действует сутки.</p>
+    <p id="receipt" hidden></p>
+    <p>Ссылка на эту страницу — ваш доступ к ключу и чеку. 18+</p>
+  </div>
+  <p id="account-link"><a href="account">Личный кабинет</a> — срок ключа и автопродление по ключу: если продление подключено, там его можно отключить или отвязать карту в любой момент.</p>
 </main>
 <script>
 (function () {
@@ -55,13 +157,40 @@
   function check() {
     fetch(api + '/v1/pay/status?order=' + encodeURIComponent(order) + '&t=' + encodeURIComponent(token)).then(function (r) { return r.json(); }).then(function (d) {
       if (d.status === 'done') {
-        show('<p class="ok">Оплата прошла. Ваш ключ «' + d.title + '» до ' + d.until.split('-').reverse().join('.') + ':</p><div class="key"><code id="k"></code><button type="button" id="copy">Скопировать</button></div>');
+        var till = d.ends ? new Date(d.ends).toLocaleString('ru-RU', { timeZone: 'Europe/Moscow', day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }) + ' МСК' : d.until.split('-').reverse().join('.');
+        show('<p class="ok">Оплата прошла. Ваш доступ «' + d.title + '» до ' + till + '. Ключ доступа:</p><div class="key"><code id="k"></code><button type="button" id="copy">Скопировать</button></div>');
         document.getElementById('k').textContent = d.key;
         document.getElementById('copy').onclick = function () { navigator.clipboard && navigator.clipboard.writeText(d.key); this.textContent = 'Скопировано'; };
+        // Чек «Мой налог»: продавец прикладывает его к заказу в боте (/receipt web-<заказ>), сервер отдаёт ссылку в receipt —
+        // только адрес lknpd.nalog.ru. Пока чека нет — честно, где и когда он появится (почты и Telegram у покупателя может не быть).
         var receipt = document.getElementById('receipt');
-        receipt.textContent = d.via === 'yoomoney' ? 'Чек самозанятого продавец пришлёт по запросу: напишите в Telegram-бот команду /paysupport и номер заказа ' + order + '.' : 'Чек ЮKassa формирует автоматически.';
+        var check = typeof d.receipt === 'string' && /^https:\/\/lknpd\.nalog\.ru\/[^\s"'<>]+$/.test(d.receipt) ? d.receipt : '';
+        if (check) {
+          var a = document.createElement('a');
+          a.href = check; a.target = '_blank'; a.rel = 'noopener'; a.textContent = 'Чек «Мой налог»';
+          receipt.textContent = '';
+          receipt.appendChild(a);
+          receipt.appendChild(document.createTextNode(' — чек самозанятого продавца за этот заказ. Он есть и в личном кабинете по вашему ключу.'));
+        } else {
+          receipt.textContent = 'Чек появится здесь и в личном кабинете по вашему ключу в течение дня — сохраните ссылку на эту страницу или ключ.';
+        }
         receipt.hidden = false;
         howto.hidden = false;
+        // Одна кнопка: бот принимает ?start=key-LZ-XXXX-XXXX-XXXX и сам подключает доступ (server/bot.mjs, onStart → onActivate).
+        var connect = document.getElementById('connect');
+        if (connect && /^LZ-[A-Za-z2-9]{4}-[A-Za-z2-9]{4}-[A-Za-z2-9]{4}$/.test(String(d.key || ''))) {
+          var cl = document.getElementById('connect-link');
+          cl.href = cl.getAttribute('href').split('?')[0] + '?start=key-' + d.key;
+          connect.hidden = false;
+        }
+        // «Макс» и VIP: вход в закрытый канал Edge даёт только бот (server/bot.mjs edgeInvite) — когда получит ключ. С даты
+        // SIGNALS_SUNSET сервер отдаёт edge: false (server/payweb.mjs) — канал закрыт, строку не показываем.
+        var edge = document.getElementById('edge');
+        if (edge && d.edge !== false && (d.plan === 'max' || d.plan === 'vip')) edge.hidden = false;
+        // Заказ с автопродлением: сервер даёт ссылку на бота с меткой подписки (t.me/<бот>?start=sub_<токен>). Без неё напоминание
+        // не дойдёт, а без напоминания списания нет (docs/legal/autopay.md, правка 3) — поэтому кнопка заметная и первая.
+        var subLink = typeof d.subLink === 'string' && /^https:\/\/t\.me\/[A-Za-z0-9_]{3,64}\?start=[A-Za-z0-9_-]{1,64}$/.test(d.subLink) ? d.subLink : '';
+        if (subLink) { document.getElementById('sub-link').href = subLink; document.getElementById('autopay').hidden = false; }
       } else if (d.status === 'canceled') {
         show('<p class="bad">Оплата не прошла или отменена.</p><p><a href="index.html#price">Вернуться к тарифам</a> и попробовать ещё раз.</p>');
       } else if (d.error) {
